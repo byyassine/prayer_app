@@ -37,7 +37,7 @@ Future<void> main() async {
     'habous_fetch',
     frequency: const Duration(hours: 12), // فحص كل 12س، الجلب الفعلي عند >48س
     constraints: Constraints(networkType: NetworkType.connected),
-    existingPeriodicWorkPolicy: ExistingPeriodicWorkPolicy.keep,
+    existingWorkPolicy: ExistingWorkPolicy.keep,
   );
 
   runApp(const PrayerApp());
