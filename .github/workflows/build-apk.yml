@@ -2,7 +2,7 @@ name: Build APK
 on:
   push:
     branches: [main]
-  workflow_dispatch:   # إمكانية التشغيل اليدوي من تبويب Actions
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,16 +12,15 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          flutter-version: '3.27.4'
 
-      # توليد هيكل مشروع Android الكامل (SDK مثبت مسبقاً على السيرفر)
       - name: Generate Android project
         run: flutter create . --org com.example --project-name prayer_app --platforms android
 
-      # وضع ملفاتنا الخاصة مكان الملفات الافتراضية
       - name: Apply custom files
         run: |
           cp custom/AndroidManifest.xml android/app/src/main/AndroidManifest.xml
+          cp custom/build.gradle android/app/build.gradle
           mkdir -p android/app/src/main/kotlin/com/example/prayer_app
           cp custom/BootReceiver.kt android/app/src/main/kotlin/com/example/prayer_app/BootReceiver.kt
 
