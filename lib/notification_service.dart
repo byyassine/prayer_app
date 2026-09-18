@@ -54,7 +54,8 @@ class NotificationService {
           data.ville.isEmpty ? '🕌' : '🕌 ${data.ville}',
           when,
           _channel,
-          androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+          uiLocalNotificationDateInterpretation:
+    UILocalNotificationDateInterpretation.absoluteTime,
         );
       }
     }
